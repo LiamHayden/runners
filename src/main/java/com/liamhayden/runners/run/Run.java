@@ -9,7 +9,7 @@ public record Run(
                   Integer id,
                   @NotEmpty
                   String title,
-                  LocalDateTime startOn,
+                  LocalDateTime startedOn,
                   LocalDateTime completedOn,
                   @Positive
                   Integer kilometers,
@@ -17,7 +17,7 @@ public record Run(
 ) {
 
     public Run {
-        if(!completedOn.isAfter(startOn())) {
+        if(!completedOn.isAfter(startedOn)) {
             throw new IllegalArgumentException("The start date must be after the end date");
         }
     }
